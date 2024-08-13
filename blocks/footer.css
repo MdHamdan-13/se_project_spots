@@ -1,8 +1,7 @@
 .footer {
   width: 105px;
-  height: 16px;
   margin-top: 60px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
   color: #212121;
   opacity: 70%;
 }
@@ -12,4 +11,5 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
+  margin: 0;
 }
