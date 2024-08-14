@@ -24,6 +24,10 @@ The Spots is third project of the software engineering program, which old and ne
 - Mobile View
   ![alt text](./images/Mobile.png)
 
+## Video
+
+- [Video Link](https://drive.google.com/file/d/1VRlU3AXVviHgnLy8YwwConuk-aN7ZCOd/view?usp=sharing)
+
 ## Deployment
 
 - [Github Link](https://mdhamdan-13.github.io/se_project_spots/)
