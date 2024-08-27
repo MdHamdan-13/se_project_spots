@@ -8,6 +8,10 @@ The Spots is third project of the software engineering program, which old and ne
   Used to build the structure of the Webpage.
 - CSS -
   Used to style the webpage.
+- JavaScript -
+  Used to make website more interactive.
+- DOM -
+  Used manipulate, access, and modify documents.
 - Responsive design -
   Used to change and adapt for certain resolutions.
 - Media queries -
