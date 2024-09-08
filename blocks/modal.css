@@ -49,13 +49,9 @@
   line-height: 24px;
   color: #fff;
   background-color: #212121;
-  width: auto;
-  height: auto;
-  top: 750px;
-  left: 497px;
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  justify-content: center;
   border-radius: 8px;
   padding: 4px 8px;
   margin: 0;
@@ -141,11 +137,14 @@
   }
 
   .modal__image {
-    width: 288px;
-    height: 80vh;
     top: 206px;
     left: 16px;
     border-radius: 4px;
+  }
+
+  .modal__caption {
+    font-size: 16px;
+    line-height: 19.2px;
   }
 
   .modal__title {
