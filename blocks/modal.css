@@ -11,11 +11,14 @@
   justify-content: center;
   visibility: hidden;
   padding: 0 20px;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.3s ease-in-out;
 }
 
 .modal_opened {
   visibility: visible;
   opacity: 1;
+  transition: visibility 0s, opacity 0.5s;
 }
 
 .modal__container {
@@ -136,15 +139,24 @@
     padding: 12px;
   }
 
+  .modal__container_type_preview {
+    padding: 0;
+    width: 100%;
+  }
+
   .modal__image {
     top: 206px;
     left: 16px;
     border-radius: 4px;
+    max-width: none;
+    max-height: none;
+    width: 100%;
   }
 
   .modal__caption {
     font-size: 16px;
     line-height: 19.2px;
+    white-space: inherit;
   }
 
   .modal__title {
@@ -158,8 +170,8 @@
   }
 
   .modal__close-btn_type_preview {
-    top: 158px;
-    left: 264px;
+    top: -40px;
+    right: 0;
   }
 
   .modal__label {
