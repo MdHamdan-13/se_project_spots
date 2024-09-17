@@ -110,10 +110,20 @@
   line-height: 1;
   cursor: pointer;
   opacity: 40%;
+  margin: 8px 0 0;
 }
 
 .modal__input:hover {
   opacity: 1;
+}
+
+.modal__error {
+  display: block;
+  color: #ff0000;
+  font-size: 16px;
+  line-height: 17.6px;
+  opacity: 70%;
+  margin-top: 8px;
 }
 
 .modal__submit-btn {
