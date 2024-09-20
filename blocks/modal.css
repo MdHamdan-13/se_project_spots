@@ -145,6 +145,11 @@
   opacity: 80%;
 }
 
+.modal__submit-btn-disabled {
+  background-color: #212121;
+  opacity: 50%;
+}
+
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
