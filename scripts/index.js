@@ -94,8 +94,9 @@ function handleModalOverlay(evt) {
 }
 
 function handleModalEscape(evt) {
+  console.log("Key pressed:", evt.key);
   if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
+    const openedModal = evt.target.classList.contains("modal_opened");
     closeModal(openedModal);
   }
 }
