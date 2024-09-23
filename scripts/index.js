@@ -94,7 +94,6 @@ function handleModalOverlay(evt) {
 }
 
 function handleModalEscape(evt) {
-  console.log("Key pressed:", evt.key);
   if (evt.key === "Escape") {
     const openedModal = evt.target.classList.contains("modal_opened");
     closeModal(openedModal);
@@ -104,13 +103,13 @@ function handleModalEscape(evt) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.addEventListener("click", handleModalOverlay);
-  modal.addEventListener("keydown", handleModalEscape);
+  document.addEventListener("keydown", handleModalEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   modal.removeEventListener("click", handleModalOverlay);
-  modal.removeEventListener("keydown", handleModalEscape);
+  document.removeEventListener("keydown", handleModalEscape);
 }
 
 function handleProfileFormSubmit(evt) {
