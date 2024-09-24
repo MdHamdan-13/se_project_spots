@@ -127,6 +127,7 @@ function handleCardFormSubmit(evt) {
   };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  modalCardForm.reset();
   disabledButton(cardSubmitBtn, settings);
   closeModal(modalCard);
 }
