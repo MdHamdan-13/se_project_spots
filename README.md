@@ -24,9 +24,9 @@ The Spots is third project of the software engineering program, which old and ne
 ## Images
 
 - Desktop View
-  ![alt text](./images/Desktop.png)
+  ![alt text](./src/images/Desktop.png)
 - Mobile View
-  ![alt text](./images/Mobile.png)
+  ![alt text](./src/images/Mobile.png)
 
 ## Video
 
