@@ -4,7 +4,7 @@ import {
   settings,
   resetValidation,
   disabledButton,
-} from "./validation.js";
+} from "../scripts/validation.js";
 
 const initialCards = [
   {
