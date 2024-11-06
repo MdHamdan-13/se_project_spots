@@ -42,13 +42,31 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  // console.log(cards);
-  cards.forEach((cardItem) => {
-    const cardElement = getCardElement(cardItem);
-    cardsList.prepend(cardElement);
+// api
+//   .getInitialCards()
+//   .then((cards) => {
+//     // console.log(cards);
+//     cards.forEach((cardItem) => {
+//       const cardElement = getCardElement(cardItem);
+//       cardsList.prepend(cardElement);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+api
+  .getAppInfo()
+  .then(([cards]) => {
+    // console.log(cards);
+    cards.forEach((cardItem) => {
+      const cardElement = getCardElement(cardItem);
+      cardsList.prepend(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
   });
-});
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileAddButton = document.querySelector(".profile__add-btn");
