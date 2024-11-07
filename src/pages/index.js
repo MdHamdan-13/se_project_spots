@@ -42,19 +42,6 @@ const api = new Api({
   },
 });
 
-// api
-//   .getInitialCards()
-//   .then((cards) => {
-//     // console.log(cards);
-//     cards.forEach((cardItem) => {
-//       const cardElement = getCardElement(cardItem);
-//       cardsList.prepend(cardElement);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-
 api
   .getAppInfo()
   .then(([cards, userInfo]) => {
@@ -68,6 +55,9 @@ api
     // handle userInfo
     //set the src of the avatar image
     //set the textContent of both text elements;
+    profileName.textContent = userInfo.name;
+    profileDescription.textContent = userInfo.about;
+    profileAvatar.src = userInfo.avatar;
   })
   .catch((err) => {
     console.error(err);
