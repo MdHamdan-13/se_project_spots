@@ -102,6 +102,9 @@ const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
+// Delete Elements
+const deleteModal = document.querySelector("#delete-modal");
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -124,8 +127,11 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", () => {
+    openModal(deleteModal);
     cardElement.remove();
   });
+
+  // cardDeleteBtn.addEventListener("click", handleDeleteButton);
 
   cardImgEl.addEventListener("click", () => {
     openModal(previewModal);
