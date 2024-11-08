@@ -128,7 +128,7 @@ function getCardElement(data) {
 
   cardDeleteBtn.addEventListener("click", () => {
     openModal(deleteModal);
-    cardElement.remove();
+    // cardElement.remove();
   });
 
   // cardDeleteBtn.addEventListener("click", handleDeleteButton);
@@ -194,6 +194,7 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       // console.log(data);
       profileAvatar.src = data.avatar;
+      closeModal(avatarModal);
     })
     .catch(console.error);
 }
