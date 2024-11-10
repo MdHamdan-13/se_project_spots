@@ -170,20 +170,6 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleModalEscape);
 }
 
-function handleCreateCard(evt) {
-  evt.preventDefault();
-  api
-    .addCards({
-      name: cardCaptionInput.value,
-      link: cardLinkInput.value,
-    })
-    .then((data) => {
-      cardTitle.textContent = data.name;
-      cardImage.src = data.link;
-    })
-    .catch(console.error);
-}
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   api
@@ -209,6 +195,20 @@ function handleAvatarSubmit(evt) {
       // console.log(data);
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
+    })
+    .catch(console.error);
+}
+
+function handleCreateCard(evt) {
+  evt.preventDefault();
+  api
+    .addCards({
+      name: cardCaptionInput.value,
+      link: cardLinkInput.value,
+    })
+    .then((data) => {
+      getCardElement(data.name);
+      getCardElement(data.link);
     })
     .catch(console.error);
 }
