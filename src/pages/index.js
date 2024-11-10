@@ -44,7 +44,7 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards, userInfo, addCard]) => {
+  .then(([cards, userInfo]) => {
     // console.log(cards);
     // console.log(userInfo);
     cards.forEach((cardItem) => {
@@ -55,9 +55,6 @@ api
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
     profileAvatar.src = userInfo.avatar;
-
-    cardCaptionInput.textContent = addCard.name;
-    cardLinkInput.src = addCard.link;
   })
   .catch((err) => {
     console.error(err);
@@ -80,8 +77,11 @@ const modalDescriptionInput = modalEdit.querySelector(
 );
 
 // Card Elements
+const cardImage = document.querySelector(".card__image");
+const cardTitle = document.querySelector(".card__title");
 const modalCard = document.querySelector("#add-card-modal");
 const modalCardForm = modalCard.querySelector(".modal__form");
+// const cardForm = modalCard.querySelector("#add-card-form");
 const cardSubmitBtn = modalCard.querySelector(".modal__submit-btn");
 const profileCardCloseBtn = modalCard.querySelector(".modal__close-btn");
 const cardLinkInput = modalCard.querySelector("#add-card-link-input");
@@ -120,6 +120,7 @@ function getCardElement(data) {
 
   cardNameEl.textContent = data.name;
   cardImgEl.src = data.link;
+
   cardImgEl.alt = data.name;
 
   cardLikeBtn.addEventListener("click", () => {
@@ -169,6 +170,20 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleModalEscape);
 }
 
+function handleCreateCard(evt) {
+  evt.preventDefault();
+  api
+    .addCards({
+      name: cardCaptionInput.value,
+      link: cardLinkInput.value,
+    })
+    .then((data) => {
+      cardTitle.textContent = data.name;
+      cardImage.src = data.link;
+    })
+    .catch(console.error);
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   api
@@ -186,7 +201,6 @@ function handleProfileFormSubmit(evt) {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-
   api
     .editAvatarInfo({
       avatar: avatarLinkInput.value,
@@ -248,7 +262,8 @@ avatarCloseBtn.addEventListener("click", () => {
 });
 
 modalEditForm.addEventListener("submit", handleProfileFormSubmit);
-modalCardForm.addEventListener("submit", handleCardFormSubmit);
+// modalCardForm.addEventListener("submit", handleCardFormSubmit);
+modalCardForm.addEventListener("submit", handleCreateCard); //replaced listener
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 // initialCards.forEach((cardItem) => {
