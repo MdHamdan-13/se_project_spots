@@ -207,8 +207,7 @@ function handleCreateCard(evt) {
       link: cardLinkInput.value,
     })
     .then((data) => {
-      getCardElement(data.name);
-      getCardElement(data.link);
+      getCardElement(data);
     })
     .catch(console.error);
 }
