@@ -8,7 +8,11 @@ class Api {
   }
 
   getAppInfo() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    return Promise.all([
+      this.getInitialCards(),
+      this.getUserInfo(),
+      this.addCards(),
+    ]);
   }
 
   getInitialCards() {
@@ -63,8 +67,22 @@ class Api {
       }
       Promise.reject(`Error: ${res.status}`);
     });
+  }
 
-    // other methods for working with the API
+  addCards({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      Promise.reject(`Error: ${res.status}`);
+    });
   }
 }
 

@@ -44,10 +44,9 @@
   gap: 20px;
 }
 
-.modal__close-btn_del {
-  top: 324px;
-  left: 1047px;
-}
+/* .modal__close-btn_del {
+  
+} */
 
 .modal__image {
   width: 100%;
