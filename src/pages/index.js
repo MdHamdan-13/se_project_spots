@@ -104,9 +104,13 @@ const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Delete Elements
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+
+let selectedCard;
+let selectedCardId;
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -120,19 +124,20 @@ function getCardElement(data) {
 
   cardNameEl.textContent = data.name;
   cardImgEl.src = data.link;
-
   cardImgEl.alt = data.name;
 
   cardLikeBtn.addEventListener("click", () => {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
 
-  cardDeleteBtn.addEventListener("click", () => {
-    openModal(deleteModal);
-    // cardElement.remove();
-  });
+  // cardDeleteBtn.addEventListener("click", (evt) => {
+  //   openModal(deleteModal);
+  //   // cardElement.remove();
+  // });
 
-  // cardDeleteBtn.addEventListener("click", handleDeleteButton);
+  cardDeleteBtn.addEventListener("click", (evt) =>
+    handleDeleteCard(cardElement, data._id)
+  );
 
   cardImgEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -215,18 +220,37 @@ function handleCreateCard(evt) {
     .catch(console.error);
 }
 
-function handleCardFormSubmit(evt) {
+function handleDeleteSubmit(evt) {
   evt.preventDefault();
-  const inputValues = {
-    name: cardCaptionInput.value,
-    link: cardLinkInput.value,
-  };
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-  modalCardForm.reset();
-  disabledButton(cardSubmitBtn, settings);
-  closeModal(modalCard);
+
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModal);
+    })
+    .catch(console.error);
 }
+
+function handleDeleteCard(cardElement, cardId) {
+  selectedCard = cardElement;
+  selectedCardId = cardId;
+
+  openModal(deleteModal);
+}
+
+// function handleCardFormSubmit(evt) {
+//   evt.preventDefault();
+//   const inputValues = {
+//     name: cardCaptionInput.value,
+//     link: cardLinkInput.value,
+//   };
+//   const cardElement = getCardElement(inputValues);
+//   cardsList.prepend(cardElement);
+//   modalCardForm.reset();
+//   disabledButton(cardSubmitBtn, settings);
+//   closeModal(modalCard);
+// }
 
 profileEditButton.addEventListener("click", () => {
   modalNameInput.value = profileName.textContent;
@@ -267,6 +291,7 @@ modalEditForm.addEventListener("submit", handleProfileFormSubmit);
 // modalCardForm.addEventListener("submit", handleCardFormSubmit);
 modalCardForm.addEventListener("submit", handleCreateCard); //replaced listener
 avatarForm.addEventListener("submit", handleAvatarSubmit);
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 // initialCards.forEach((cardItem) => {
 //   const cardElement = getCardElement(cardItem);
