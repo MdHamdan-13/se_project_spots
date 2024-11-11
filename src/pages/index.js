@@ -126,16 +126,18 @@ function getCardElement(data) {
   cardImgEl.src = data.link;
   cardImgEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
-  });
+  // cardLikeBtn.addEventListener("click", () => {
+  //   cardLikeBtn.classList.toggle("card__like-btn_liked");
+  // });
 
   // cardDeleteBtn.addEventListener("click", (evt) => {
   //   openModal(deleteModal);
   //   // cardElement.remove();
   // });
 
-  cardDeleteBtn.addEventListener("click", (evt) =>
+  cardLikeBtn.addEventListener("click", (evt) => handleLikeBtn(evt, data._id));
+
+  cardDeleteBtn.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
   );
 
@@ -237,6 +239,18 @@ function handleDeleteCard(cardElement, cardId) {
   selectedCardId = cardId;
 
   openModal(deleteModal);
+}
+
+function handleLikeBtn(evt, id) {
+  //evt.target.classList.toggle("card__like-btn_liked");
+  const isLiked = evt.target.classList.toggle("card__like-btn_liked");
+
+  api
+    .handleLikeButton(id, isLiked)
+    .then(() => {
+      evt.target.classList.toggle("card__like-btn_liked");
+    })
+    .catch(console.error);
 }
 
 // function handleCardFormSubmit(evt) {
