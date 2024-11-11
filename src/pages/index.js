@@ -242,7 +242,6 @@ function handleDeleteCard(cardElement, cardId) {
 }
 
 function handleLikeBtn(evt, id) {
-  //evt.target.classList.toggle("card__like-btn_liked");
   const isLiked = evt.target.classList.toggle("card__like-btn_liked");
 
   api
