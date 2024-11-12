@@ -206,10 +206,11 @@ function handleCreateCard(evt) {
       link: cardLinkInput.value,
     })
     .then((data) => {
-      // getCardElement(data);
       const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
       closeModal(modalCard);
+      modalCardForm.reset();
+      disabledButton(cardSubmitBtn, settings);
     })
     .catch(console.error)
     .finally(() => {
