@@ -1,4 +1,4 @@
-# Project 3: Spots
+# Project: Spots
 
 The Spots is third project of the software engineering program, which old and new technology were used to create this project. The main functionality of this project is for the user to share their favorite pictures with the world.
 
